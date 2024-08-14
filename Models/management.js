@@ -27,7 +27,7 @@ const managementSchema = new mongoose.Schema({
      role:{
         type:String,
         enum:['admin','manager','sales representative'],
-        default:'sale representative',
+        default:'sales representative',
      }
     
 })

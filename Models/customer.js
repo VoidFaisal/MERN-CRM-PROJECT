@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const customerSchema = new mongoose.Schema({
    management_id:{
-      type:Number,
+      type:String,
       required:true
    },
     name:{

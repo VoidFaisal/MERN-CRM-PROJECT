@@ -1,4 +1,4 @@
-import CustomAPIError from "../Errors/customError.js"
+import {CustomAPIError} from "../Errors/customError.js"
 import jwtVerify from "../JWT/jwtVerify.js"
 
 const auth = (req,res,next)=>
