@@ -1,16 +1,23 @@
 import express from "express"
+import "express-async-errors"
 import connect_db from "./DB/connect_db.js"
 import dotenv from"dotenv";
 import managementrouter from "./Routes/managementRoute.js";
-import customerrouter from "./Routes/customerRoute.js"
+// import customerrouter from "./Routes/customerRoute.js"
 import adminrouter from "./Routes/adminRoute.js"
+import notFound from "./Errors/notFound.js";
+import errorHandler from "./Errors/errorHandler.js";
 dotenv.config()
 const app = express()
 const port = process.env.PORT||3000
 app.use(express.json())
 
 
-app.use("/crm",managementrouter,customerrouter,adminrouter)
+app.use("/crm",managementrouter,adminrouter)
+
+// middleware
+app.use(notFound)
+app.use(errorHandler)
 
 const start = async () =>
 {

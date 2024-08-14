@@ -1,5 +1,6 @@
 import management from "../Models/management.js";
 import bcrypt from "bcrypt";
+import jwtSign from "../JWT/jwtSign.js"
 
 const registerController = async (req, res) => {
   try {
@@ -30,7 +31,10 @@ const loginController = async (req, res) => {
         if(result)
         {
             console.log("Password Matched")
-            res.status(200).json({ msg: "User Found", data: Management });
+            const userData = Management[0];
+            const payload = {user_id:userData._id,username:userData.username,role:userData.role}
+            const token =jwtSign(payload)
+            res.status(200).json({ msg: "User Found",token});
         }
         else{
             console.log("Incorrect Password",err);

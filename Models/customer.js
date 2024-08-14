@@ -1,7 +1,11 @@
 import mongoose from "mongoose";
 
 const customerSchema = new mongoose.Schema({
-    username:{
+   management_id:{
+      type:Number,
+      required:true
+   },
+    name:{
         type:String,
         required:[true,"must provide name"],
         trim:true,
@@ -18,7 +22,7 @@ const customerSchema = new mongoose.Schema({
           message: 'Invalid email address format',
         },
       },
-     password:{
+     phone_number:{
         type:String,
         required:true,
         minLength:[8,"password must have eight or more characters"]
@@ -38,10 +42,13 @@ const customerSchema = new mongoose.Schema({
     industry: {
         type:String,
         required:true
-     }
+     },
+     notes:
+     {
+      type:String,
+      required:true
+     },
 
-     
-    
 })
 
 export default mongoose.model("customer",customerSchema)

@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 const managementSchema = new mongoose.Schema({
+  
     username:{
         type:String,
         required:[true,"must provide name"],
@@ -24,8 +25,9 @@ const managementSchema = new mongoose.Schema({
         minLength:[8,"password must have eight or more characters"]
      },
      role:{
-        type:Number,
-        default:1,
+        type:String,
+        enum:['admin','manager','sales representative'],
+        default:'sale representative',
      }
     
 })
