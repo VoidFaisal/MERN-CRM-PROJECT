@@ -5,6 +5,7 @@ import dotenv from"dotenv";
 import managementrouter from "./Routes/managementRoute.js";
 // import customerrouter from "./Routes/customerRoute.js"
 import adminrouter from "./Routes/adminRoute.js"
+import logrouter from "./Routes/customerLogRoute.js"
 import notFound from "./Errors/notFound.js";
 import errorHandler from "./Errors/errorHandler.js";
 dotenv.config()
@@ -14,6 +15,7 @@ app.use(express.json())
 
 
 app.use("/crm",managementrouter,adminrouter)
+app.use("/crm",logrouter)
 
 // middleware
 app.use(notFound)

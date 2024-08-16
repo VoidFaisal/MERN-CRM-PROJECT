@@ -2,7 +2,8 @@ import mongoose from "mongoose";
 
 const customerSchema = new mongoose.Schema({
    management_id:{
-      type:String,
+      type:mongoose.Schema.Types.ObjectId,
+      ref:'management',
       required:true
    },
     name:{
@@ -23,7 +24,7 @@ const customerSchema = new mongoose.Schema({
         },
       },
      phone_number:{
-        type:String,
+        type:Number,
         required:true,
         minLength:[8,"password must have eight or more characters"]
      },

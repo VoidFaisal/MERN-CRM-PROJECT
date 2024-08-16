@@ -70,5 +70,138 @@ if(role=="admin" && id)
 }else
 res.status(400).json({msg:"No Data Found"})
 }
+const getSingleCustomer =async (req,res)=>
+{
+const {id} = req.params
+const Customer = await customer.findById(id)
+if(!Customer)
+{
+  res.status(400).json({msg:"No Data Found"})
+}
+res.status(200).json({Customer})
+}
+const getSingleManagement =async (req,res)=>
+{
+  const {id} = req.params
+const Management = await management.findById(id)
+if(!Management)
+{
+  res.status(400).json({msg:"No Data Found"})
+}
+res.status(200).json({Management})
+}
 
-export { admin,updateUser,deleteUser }
+const createCustomer = async (req,res)=>
+{
+  const { user_id,role } = req.user;
+  
+    
+  if(role == 'sales representative' ){
+    try {
+      
+      const management_id = user_id
+      if(management_id){
+        return console.log(management_id);
+        
+      }
+      
+      const {name,email,phone_number,company,address,industry,notes} = req.body
+      const Customer = await customer.create({management_id,name,email,phone_number,company,address,industry,notes})
+      if(Customer){
+        res.status(200).json({msg:"Customer Created"})
+      }
+      
+    } catch (error) {
+      throw new CustomAPIError(error.message,400)
+    }
+  }
+  if(role == 'manager'){
+    try {
+      const management_id = user_id
+      const {name,email,phone_number,company,address,industry,notes} = req.body
+      const Customer = await customer.create({management_id,name,email,phone_number,company,address,industry,notes})
+      if(Customer){
+        res.status(200).json({msg:"Customer Created"})
+      }
+      
+    } catch (error) {
+      throw new CustomAPIError(error.message,400)
+    }}
+  if(role == 'admin'){
+    try {
+      const management_id = user_id
+      const {name,email,phone_number,company,address,industry,notes} = req.body
+      const Customer = await customer.create({management_id,name,email,phone_number,company,address,industry,notes})
+      if(Customer){
+        res.status(200).json({msg:"Customer Created"})
+      }
+      
+    } catch (error) {
+      throw new CustomAPIError(error.message,400)
+    }}
+}
+
+const updateCustomer =async (req,res) =>
+{
+  const { user_id, role } = req.user;
+  if(role == 'sales representative'){
+    try {
+      const{id} = req.params
+      
+      const Customer = await customer.findByIdAndUpdate(id,req.body,{new:true,runValidators:true})
+      if(Customer){
+        res.status(200).json({msg:"Customer updated"})
+      }
+      
+    } catch (error) {
+      throw new CustomAPIError(error.message,400)
+    }
+  }
+  if(role == 'manager'){
+    try {
+      const{id} = req.params
+      
+      const Customer = await customer.findByIdAndUpdate(id,req.body,{new:true,runValidators:true})
+      if(Customer){
+        res.status(200).json({msg:"Customer updated"})
+      }
+      
+    } catch (error) {
+      throw new CustomAPIError(error.message,400)
+    }}
+  if(role == 'admin'){
+    try {
+      const{id} = req.params
+      
+      const Customer = await customer.findByIdAndUpdate(id,req.body,{new:true,runValidators:true})
+      if(Customer){
+        res.status(200).json({msg:"Customer updated"})
+      }
+      
+    } catch (error) {
+      throw new CustomAPIError(error.message,400)
+    }}
+}
+
+const deleteCustomer =async (req,res) =>
+{
+  const { user_id, role } = req.user;
+const {id} = req.params
+if(role=="admin" && id)
+{
+  try {
+    const Customer = await customer.findByIdAndDelete(id);
+    if(!Customer)
+    {
+      res.status(404).json({msg:"Data Does Not Exists "})    
+    }
+    res.status(200).json({msg:"Data Deleted Successfully"})
+  } catch (error) {
+    throw new CustomAPIError(error.message,400)
+  }
+}
+else{
+  res.status(400).json({msg:"You are not admin"})
+}
+}
+export { admin,updateUser,deleteUser,createCustomer,updateCustomer,deleteCustomer,getSingleCustomer,getSingleManagement }
