@@ -3,7 +3,8 @@ import "express-async-errors"
 import connect_db from "./DB/connect_db.js"
 import dotenv from"dotenv";
 import managementrouter from "./Routes/managementRoute.js";
-// import customerrouter from "./Routes/customerRoute.js"
+import leadrouter from "./Routes/leadManagementRoute.js"
+import leadopportunityrouter from "./Routes/leadOpportunityRoute.js"
 import adminrouter from "./Routes/adminRoute.js"
 import logrouter from "./Routes/customerLogRoute.js"
 import notFound from "./Errors/notFound.js";
@@ -15,7 +16,7 @@ app.use(express.json())
 
 
 app.use("/crm",managementrouter,adminrouter)
-app.use("/crm",logrouter)
+app.use("/crm",logrouter,leadrouter,leadopportunityrouter)
 
 // middleware
 app.use(notFound)

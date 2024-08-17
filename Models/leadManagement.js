@@ -1,12 +1,16 @@
 import mongoose from "mongoose";
-
-const managementSchema = new mongoose.Schema({
-  
-    username:{
+ 
+const leadManagementSchema = new mongoose.Schema({
+    management_id:{
+    type:mongoose.Schema.Types.ObjectId,
+    required:true
+    },
+    name:{
         type:String,
         required:[true,"must provide name"],
         trim:true,
         maxLength:[30,"name cannot be longer than thirty characters"]
+
     },
     email: {
         type: String,
@@ -19,18 +23,20 @@ const managementSchema = new mongoose.Schema({
           message: 'Invalid email address format',
         },
       },
-     password:{
-        type:String,
+     phone_number:{
+        type:Number,
         required:true,
         minLength:[8,"password must have eight or more characters"]
      },
-     role:{
+     source:{
         type:String,
-        enum:['admin','manager','sales representative'],
-        default:'sales representative',
+        required:true
      },
-
-    
+     status:{
+        type:String,
+        enum:['new','in progress','converted','lost']
+     },
+     
 },{timestamps:true})
 
-export default mongoose.model("management",managementSchema)
+export default ('leadmanagement',leadManagementSchema)

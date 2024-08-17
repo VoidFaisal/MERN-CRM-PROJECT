@@ -3,7 +3,7 @@ import { createCustomerLog, deleteCustomerLog, readCustomerLog, updateCustomerLo
 import auth from "../Middleware/auth.js"
 const router = express.Router()
 
-// router.use(auth)
+router.use(auth)
 
 router.route('/addcustomerlog').post(createCustomerLog)
 router.route('/viewcustomerlog').get(readCustomerLog)
