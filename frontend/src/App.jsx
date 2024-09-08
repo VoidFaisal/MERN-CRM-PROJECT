@@ -1,20 +1,24 @@
-
+import {createBrowserRouter,Route,createRoutesFromElements,RouterProvider} from "react-router-dom"
 import './App.css'
-import Dashboard from './components/Dashboard'
-import Sidebar from './components/Sidebar'
+import HomePage from "./pages/HomePage"
+import CustomersPage from "./pages/CustomersPage"
+import LeadsPage from "./pages/LeadsPage"
+import ReportsPage from "./pages/ReportsPage"
 
 function App() {
-
-
-
-  return (
+  const router = createBrowserRouter(createRoutesFromElements(
     <>
-    <div className='w-full '>
-      <Sidebar/>
-      <Dashboard/>
-      </div>
+    <Route index element={<HomePage/>}/>
+    <Route path="/customers" element={<CustomersPage/>}/>
+    <Route path="/leads" element={<LeadsPage/>}/>
+    <Route path="reports" element={<ReportsPage/>}/>
     </>
-  )
-}
+  ))
+  
+  
+    return (
+      <RouterProvider router={router}/>
+    )
+  }
 
 export default App

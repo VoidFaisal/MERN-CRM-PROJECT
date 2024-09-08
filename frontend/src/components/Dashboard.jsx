@@ -1,22 +1,19 @@
 import React from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
-import { useSelector } from 'react-redux'
+import Hero from './Hero'
 
 const Dashboard = () => {
-    const toggle = useSelector((state)=>state.sidetoggle.value)
-    console.log(toggle);
+    
     
   return (
     <>
-    <div className='min-h-screen m-0 grid grid-rows-1'>
-    <div className='w-full  '>
-      <Navbar/>
+    <div className='min-h-screen  grid grid-rows-1'>
+    <div className='w-full fixed'>
+      <Navbar />
     </div>
-   <div className={`w-full h-screen bg-blue-200 `}>
-    <div className={`${toggle?"":"ml-64"}`}>
-        dsandsandna
-    </div>
+   <div className={`w-full min-h-screen bg-blue-200 `}>
+    <Hero/>
 
    </div>
     <div className='w-full  '>

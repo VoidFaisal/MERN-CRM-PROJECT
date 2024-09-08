@@ -9,7 +9,7 @@ const Footer = () => {
         <h1 className='text-white font-bold flex justify-center pt-1 text-xl'>Customer Relationship Management</h1>
         <p className='text-white text-lg font-semibold flex justify-center pt-1 '>Copyright <FaRegCopyright className='ml-1 mt-1.5'/> 2024 ScriptExp, Inc</p>
         <div className='grid justify-center gap-3 grid-flow-col text-white text-md font-semibold cursor-pointer'>
-            <span className=' hover:text-blue-900'>Legal Stuff</span><span className=' hover:text-blue-900'>Privacy Policy</span><span className=' hover:text-blue-900'>Security</span><span className=' hover:text-blue-900'>Website Accessbility</span><span className=' hover:text-blue-900'>Managge Cookies</span>
+            <span className=' hover:text-blue-900'>Legal Stuff</span><span className=' hover:text-blue-900'>Privacy Policy</span><span className=' hover:text-blue-900'>Security</span><span className=' hover:text-blue-900'>Website Accessbility</span><span className=' hover:text-blue-900'>Manage Cookies</span>
         </div>
         </div>
       

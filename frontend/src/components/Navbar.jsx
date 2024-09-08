@@ -1,18 +1,20 @@
 import React from 'react'
-import { FaBars, FaBell, FaSearch, FaUserCircle } from 'react-icons/fa'
+import { FaBars, FaBell, FaSearch, FaSignOutAlt, FaUserCircle } from 'react-icons/fa'
 import { toggleSidebar } from '../redux store/slices/Sidebar/SidebarToggleSlice'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
+import { FaGear,FaUser } from 'react-icons/fa6'
 
 const Navbar = () => {
   const toggle = useSelector((state)=>state.sidetoggle.value)
   const dispatch = useDispatch()
-  console.log(toggle)
+  // console.log(toggle)x
   return (
-   <nav className={`bg-gradient-to-r from-indigo-500 to-blue-300 px-4 py-3 flex justify-between ${toggle?'':'ml-64'}`}>
+   <nav className={`bg-gradient-to-r from-indigo-500 to-blue-300 px-4 py-3 flex justify-between ${toggle?'':'ml-64'} `}>
     <div className='flex item-center text-xl'>
-      <FaBars className='text-white me-4 cursor-pointer' onClick={()=>dispatch(toggleSidebar())}/>
-      <span className='text-white font-semibold'>Customer Relationship Management</span>
+      <FaBars className='text-white me-4 cursor-pointer mt-1' onClick={()=>dispatch(toggleSidebar())}/>
+      <span className='text-white font-semibold CRM-desktop'>Customer Relation Management</span>
+      <span className='text-white font-semibold md:display-none'>CRM</span>
     </div>
     <div className='flex items-center gap-x-5'>
       <div className='relative md:w-65'>

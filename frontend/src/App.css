@@ -1,0 +1,9 @@
+@media (max-width:768px) {
+    
+    .CRM-desktop{
+        display:none;
+    }
+    .CRM-mobile{
+        display: block;
+    }
+}
